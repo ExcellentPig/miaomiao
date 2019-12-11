@@ -1,7 +1,7 @@
 <template>
 	<div class="movie_body">
 		<ul>
-			<li>
+			<!-- <li>
 				<div class="pic_show"><img src="/images/movie_1.jpg" /></div>
 				<div class="info_list">
 					<h2>无名之辈</h2>
@@ -104,6 +104,21 @@
 					<p>2018-11-30上映</p>
 				</div>
 				<div class="btn_pre">预售</div>
+			</li> -->
+			<li v-for="item in comimgList" :key="item.id">
+				<div class="pic_show">
+					<img :src="item.img | setWH('128.180')" />
+				</div>
+				<div class="info_list">
+					<h2>{{item.nm}}<img v-if="item.version" src="@/assets/maxs.png"></h2>
+					<p>
+						<span class="person">{{item.wish}}</span>
+						人想看
+					</p>
+					<p>{{item.star}}</p>
+					<p>{{item.rt}}上映</p>
+				</div>
+				<div class="btn_pre">预售</div>
 			</li>
 		</ul>
 	</div>
@@ -111,7 +126,20 @@
 
 <script>
 export default {
-	name: 'ComingSoon'
+	name: 'ComingSoon',
+	data(){
+		return {
+			comimgList:[]
+		}
+	},
+	mounted(){
+		this.axios.get('/api/movieComingList?cityId=10').then((res)=>{
+			var msg = res.data.msg;
+			if(msg === 'ok'){
+				this.comimgList = res.data.data.comimgList;
+			}
+		})
+	}
 };
 </script>
 
