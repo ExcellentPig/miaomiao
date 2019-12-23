@@ -9,7 +9,14 @@ Vue.prototype.axios = axios
 //全局过过滤器
 Vue.filter('setWH',(url,arg)=>{
 	return url.replace(/w\.h/,arg);
-})
+});
+
+//全局组件
+import Scroller from '@/components/Scroller'
+Vue.component('Scroller' , Scroller);
+
+import Loading from '@/components/Loading';
+Vue.component('Loading' , Loading);
 
 Vue.config.productionTip = false
 
