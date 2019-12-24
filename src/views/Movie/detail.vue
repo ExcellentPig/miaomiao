@@ -7,7 +7,7 @@
 				<div class="detail_list_bg"></div>
 				<div class="detail_list_filter"></div>
 				<div class="detail_list_content">
-					<div class="detail_list_img"><img src="images/movie_1.jpg" alt="" /></div>
+					<div class="detail_list_img"><img src="/images/movie_1.jpg" alt="" /></div>
 					<div class="detail_list_info">
 						<h2>无名之辈</h2>
 						<p>A Cool Fish</p>
@@ -58,7 +58,7 @@
 				</ul>
 			</div> -->
 			<div class="detail_list">
-				<div class="detail_list_bg"></div>
+				<div class="detail_list_bg" :style="{ 'background-image': 'url(' + detailMovie.img.replace(/w\.h/, '148.208') + ')' }"></div>
 				<div class="detail_list_filter"></div>
 				<div class="detail_list_content">
 					<div class="detail_list_img"><img :src="detailMovie.img | setWH(148.208)" alt="" /></div>
@@ -93,7 +93,7 @@ export default {
 	data() {
 		return {
 			detailMovie: {},
-			isLoading:true
+			isLoading: true
 		};
 	},
 	components: {
@@ -102,7 +102,7 @@ export default {
 	props: ['movieId'],
 	methods: {
 		handleToBack() {
-			this.$route.back();
+			this.$router.back();
 		}
 	},
 	mounted() {
@@ -134,7 +134,7 @@ export default {
 	min-height: 100%;
 	background-color: white;
 }
-#detailContrainer slide-enter-active {
+#detailContrainer.slide-enter-active {
 	animation: 0.3s slideMove;
 }
 @keyframes slideMove {
@@ -158,7 +158,7 @@ export default {
 .detail_list .detail_list_bg {
 	width: 100%;
 	height: 100%;
-	background: url(/images/movie_1.jpg) 0 40%;
+	background: 0 40%;
 	filter: blur(20px);
 	background-size: cover;
 	position: absolute;

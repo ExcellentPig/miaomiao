@@ -187,7 +187,7 @@ export default {
 	methods: {
 		handlerToDetail(movieId) {
 			//console.log(movieId);
-			this.$route.push('/movie/detail/1/'+movieId);
+			this.$router.push('/movie/detail/1/'+movieId);
 		},
 		handleToScroll(pos) {
 			if (pos.y > 30) {
